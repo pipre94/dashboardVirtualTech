@@ -1,0 +1,78 @@
+<div>
+    <br>
+    <label>Nueva Factura</label>
+    <button type="button" class="btn btn-secondary" (click)="ClearData()">Limpiar</button>
+</div>
+<div class="row g-3 needs-validation">
+    <div class="col-md-3">
+        <label for="validationTooltip04" class="form-label">Cargo</label>
+        <select class="form-select" id="validationTooltip04" required>
+        <option value="" disabled>Selecciona...</option>
+        @for (item of listCustomer; track item.idPosition) {
+            <option value="{{item.id}}">{{ item.razonSocial}}</option>
+        }        
+        </select>    
+    </div>
+    <div class="col-md-3">
+        <label for="validationTooltip02" class="form-label"># Factura</label>
+        <input type="number" class="form-control" required>
+        
+      </div>
+    </div>
+    <br>
+  <button type="button" class="btn btn-primary" (click)="AddProdcut()">Agregar Producto</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Producto</th>
+        <th scope="col">Precio Unitario</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">imagen</th>
+        <th scope="col">Totales</th>
+      </tr>
+    </thead>
+    <tbody>      
+        @for (item of listProduct; track item.id) {
+          <tr> 
+            <td>{{ item.nombreProducto }}</td> 
+            <td>{{ item.imagenProducto }}</td> 
+            <td><input type="number"></td> 
+            <td>{{ item.precioUnitario }}</td>
+            <td>{{ item.ext }}</td>
+          </tr>
+        }    
+    </tbody>
+  </table>
+  <br>
+  <div class="container text-end ">
+    <div class="row">
+      <div class="col">
+        Subtotal
+      </div>
+      <div class="col">
+        {{subtotal}}
+      </div>
+    </div>
+    <div class="row">
+        <div class="col">
+          Impuestos(19%)
+        </div>
+        <div class="col">
+          {{taxes}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          Total
+        </div>
+        <div class="col">
+          {{total}}
+        </div>
+      </div>
+</div>
+  <div>
+    <br>
+    <button type="button" class="btn btn-primary">Guardar</button>
+</div>
+
+
